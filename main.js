@@ -1,4 +1,4 @@
-import './style.css'
+import './style.scss'
 
 const input = document.getElementById("input-field");
 const addToCart = document.getElementById("add-button");
