@@ -1,6 +1,6 @@
 import './style.scss';
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getDatabase, ref, push} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import {initializeApp} from "firebase/app";
+import  {getDatabase, ref, push, onValue } from "firebase/database"
 
 const appSettings = {
   databaseURL:
@@ -11,7 +11,10 @@ const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const moviesInDB = ref(database, 'movies');
 
-console.log(database);
+onValue(moviesInDB, (snapshot) => {
+  console.log(snapshot)
+})
+
 
 const input = document.getElementById('input-field');
 const addToCart = document.getElementById('add-button');
