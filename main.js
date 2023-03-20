@@ -14,7 +14,7 @@ const moviesInDB = ref(database, 'movies');
 
 onValue(moviesInDB, function (snapshot) {
   const moviesList = Object.values(snapshot.val());
-  clearUL();-+
+  clearUL();
   moviesList.forEach((movie) => {
     addMoviesToDOM(movie);
   });
@@ -27,14 +27,13 @@ addToCart.addEventListener('click', () => {
   let inputValue = input.value;
   if (inputValue.length !== 0) {
     push(moviesInDB, inputValue);
-    addMoviesToDOM(inputValue);
     console.log(`${inputValue} added to database`);
-    clearUL();
+    input.value = ""
   } else {
     console.log('Please eneter a valid movie title');
   }
 });
 
 
-const clearUL = () => input.value = "";
+const clearUL = () => itemList.innerHTML = "";
 const addMoviesToDOM = (item) => (itemList.innerHTML += `<li>${item}</li>`);
