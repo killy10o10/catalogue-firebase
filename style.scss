@@ -19,13 +19,22 @@ body {
 input {
   color: #432000;
   background-color: #dce1eb;
+  margin-block: 30px;
   text-align: center;
 }
 
 button {
   color: #fdfdfd;
   background-color: #ac485a;
+  box-shadow: 0px 0px 15px 9px rgba(0, 0, 0, 0.1);
+  transition: 0.5s all;
   cursor: pointer;
+}
+
+button:active {
+  box-shadow: 0px 0px 15px 9px rgba(0, 0, 0, 0.1),
+    0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  scale: 98%;
 }
 
 #input-field,
@@ -43,11 +52,26 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  height: 350px;
-  width: 350px;
+  min-height: 350px;
+  max-width: 350px;
   border: 5px solid black;
   border-radius: 10px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1),
     0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+#item-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+  margin-top: 20px;
+  list-style: none;
+  li{
+    background-color: #FFFDF8;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+  }
 }
