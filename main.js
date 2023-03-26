@@ -36,4 +36,8 @@ addToCart.addEventListener('click', () => {
 
 
 const clearUL = () => itemList.innerHTML = "";
-const addMoviesToDOM = (item) => (itemList.innerHTML += `<li>${item}</li>`);
+const addMoviesToDOM = (item) => {
+  const newListEl = document.createElement("li");
+  newListEl.textContent = item;
+  itemList.append(newListEl);
+};
