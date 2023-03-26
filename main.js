@@ -16,8 +16,7 @@ onValue(moviesInDB, function (snapshot) {
   const moviesList = Object.entries(snapshot.val());
   clearUL();
   moviesList.forEach((movie) => {
-    let currentMovieItem = movie[1];
-    addMoviesToDOM(currentMovieItem);
+    addMoviesToDOM(movie);
   });
 });
 
@@ -39,7 +38,7 @@ addToCart.addEventListener('click', () => {
 const clearUL = () => itemList.innerHTML = "";
 const addMoviesToDOM = (item) => {
   const newListEl = document.createElement("li");
-  newListEl.textContent = item;
-  console.log(item)
+  newListEl.textContent = item[0];
+  console.log(item[1])
   itemList.append(newListEl);
 };
