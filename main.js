@@ -13,10 +13,11 @@ const database = getDatabase(app);
 const moviesInDB = ref(database, 'movies');
 
 onValue(moviesInDB, function (snapshot) {
-  const moviesList = Object.values(snapshot.val());
+  const moviesList = Object.entries(snapshot.val());
   clearUL();
   moviesList.forEach((movie) => {
-    addMoviesToDOM(movie);
+    let currentMovieItem = movie[1];
+    addMoviesToDOM(currentMovieItem);
   });
 });
 
@@ -39,5 +40,6 @@ const clearUL = () => itemList.innerHTML = "";
 const addMoviesToDOM = (item) => {
   const newListEl = document.createElement("li");
   newListEl.textContent = item;
+  console.log(item)
   itemList.append(newListEl);
 };
