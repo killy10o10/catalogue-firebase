@@ -13,11 +13,17 @@ const database = getDatabase(app);
 const moviesInDB = ref(database, 'movies');
 
 onValue(moviesInDB, function (snapshot) {
-  const moviesList = Object.entries(snapshot.val());
-  clearUL();
-  moviesList.forEach((movie) => {
-    addMoviesToDOM(movie);
-  });
+  if(snapshot.exists()) {
+    const moviesList = Object.entries(snapshot.val());
+    clearUL();
+    moviesList.forEach((movie) => {
+      addMoviesToDOM(movie);
+    });
+  }
+  else{
+    itemList.innerHTML = "No items here... yet"
+  }
+
 });
 
 const input = document.getElementById('input-field');
