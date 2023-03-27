@@ -31,8 +31,12 @@ button {
   color: #fdfdfd;
   background-color: #ac485a;
   box-shadow: 0px 0px 15px 9px rgba(0, 0, 0, 0.1);
-  transition: 0.5s all;
+  transition: 0.3s all;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #432000;
 }
 
 button:active {
@@ -79,7 +83,11 @@ button:active {
     border-radius: 8px;
     padding: 10px;
     user-select: none;
+    transition: 0.5s all;
     cursor: pointer;
+  }
+  li:hover {
+    background-color: #FFECC7;
   }
 }
 
