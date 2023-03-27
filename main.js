@@ -1,6 +1,6 @@
 import './style.scss';
 import { initializeApp } from 'firebase/app';
-import  {getDatabase, ref, push, onValue } from "firebase/database";
+import  {getDatabase, ref, push, onValue, remove } from "firebase/database";
 
 const appSettings = {
   databaseURL:
@@ -13,11 +13,17 @@ const database = getDatabase(app);
 const moviesInDB = ref(database, 'movies');
 
 onValue(moviesInDB, function (snapshot) {
-  const moviesList = Object.values(snapshot.val());
-  clearUL();
-  moviesList.forEach((movie) => {
-    addMoviesToDOM(movie);
-  });
+  if(snapshot.exists()) {
+    const moviesList = Object.entries(snapshot.val());
+    clearUL();
+    moviesList.forEach((movie) => {
+      addMoviesToDOM(movie);
+    });
+  }
+  else{
+    itemList.innerHTML = "No items here... yet"
+  }
+
 });
 
 const input = document.getElementById('input-field');
@@ -36,4 +42,13 @@ addToCart.addEventListener('click', () => {
 
 
 const clearUL = () => itemList.innerHTML = "";
-const addMoviesToDOM = (item) => (itemList.innerHTML += `<li>${item}</li>`);
+const addMoviesToDOM = (item) => {
+  const newListEl = document.createElement("li");
+  newListEl.textContent = item[1];
+  itemList.append(newListEl);
+  let itemID = item[0]
+  newListEl.addEventListener("dblclick", () => {
+    let itemToBeDeleted = ref(database, `movies/${itemID}`);
+    remove(itemToBeDeleted);
+  })
+};

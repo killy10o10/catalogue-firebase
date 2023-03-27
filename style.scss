@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
 
+:root {
+  --effect: hover 1s linear infinite;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  user-select: none;
   font-family: 'Rubik', sans-serif;
 }
 
@@ -27,8 +32,12 @@ button {
   color: #fdfdfd;
   background-color: #ac485a;
   box-shadow: 0px 0px 15px 9px rgba(0, 0, 0, 0.1);
-  transition: 0.5s all;
+  transition: 0.3s all;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #432000;
 }
 
 button:active {
@@ -68,10 +77,36 @@ button:active {
   gap: 5px 10px;
   margin-top: 20px;
   list-style: none;
+  color: #6f573c;
   li{
     background-color: #FFFDF8;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 10px;
+    transition: 0.5s all;
+    cursor: pointer;
   }
+  li:hover {
+    background-color: #FFECC7;
+  }
+}
+
+
+
+// Loading Animation
+@keyframes load {
+  0%{
+      opacity: 0.08;
+      filter: blur(5px);
+      letter-spacing: 3px;
+      }
+}
+
+.animate {
+display:flex;
+justify-content: center;
+align-items: center;
+animation: load 1.2s infinite 0s ease-in-out;
+animation-direction: alternate;
+text-shadow: 0 0 1px white;
 }
