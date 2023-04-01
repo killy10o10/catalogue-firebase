@@ -49,6 +49,15 @@ To get a local copy up and running follow these simple example steps.
 - Instagram: [quami_killy](https://www.instagram.com/quami_killy/)
 
 
+## 🔭 Future Features <a name="future-features"></a>
+
+> These features will be added in future updates. ⬇️⬇️
+
+- [ ] **Show total amount of item prices**
+- [ ] **Enable users to log in**
+- [ ] **Show User shopping history**
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
