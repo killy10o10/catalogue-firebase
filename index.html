@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping Catalogue</title>
-  </head>
-  <body>
-    <main id="app">
-      <div class="add-card">
-        <img src="./assets/cat.png" alt="cat-photo">
-        <input type="text" id="input-field" placeholder="Item">
-        <input type="text" id="input-field" placeholder="Amount">
-        <button id="add-button">Add to cart</button>
-        <ul id="item-list">
-         <h2 class="animate"> Loading...</h2>
-        </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Catalogue</title>
+</head>
+
+<body>
+  <main id="app">
+    <div class="add-card">
+      <img src="./assets/cat.png" alt="cat-photo">
+      <h2 id="total-amount"></h2>
+      <div class="inputs">
+        <input type="text" class="input-field" id="item-input" placeholder="Item">
+        <input type="number" class="input-field" id="amount-input" placeholder="Amount">
       </div>
-    </main>
-    <script type="module" src="/main.js"></script>
-  </body>
+      <button id="add-button">Add to cart</button>
+      <ul id="item-list">
+        <h2 class="animate"> Loading...</h2>
+      </ul>
+    </div>
+  </main>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>

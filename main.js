@@ -10,14 +10,16 @@ const appSettings = {
 const itemList = document.getElementById('item-list');
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
-const moviesInDB = ref(database, 'movies');
+const itemsInDB = ref(database, 'items');
+const amountInDB = ref(database, 'amount')
 
-onValue(moviesInDB, function (snapshot) {
+
+onValue(itemsInDB, function (snapshot) {
   if(snapshot.exists()) {
-    const moviesList = Object.entries(snapshot.val());
+    const itemsList = Object.entries(snapshot.val());
     clearUL();
-    moviesList.forEach((movie) => {
-      addMoviesToDOM(movie);
+    itemsList.forEach((item) => {
+      addItemsToDOM(item);
     });
   }
   else{
@@ -26,29 +28,33 @@ onValue(moviesInDB, function (snapshot) {
 
 });
 
-const input = document.getElementById('input-field');
+const itemInput = document.getElementById('item-input');
+const amountInput = document.getElementById('amount-input')
 const addToCart = document.getElementById('add-button');
 
 addToCart.addEventListener('click', () => {
-  let inputValue = input.value;
-  if (inputValue.length !== 0) {
-    push(moviesInDB, inputValue);
-    console.log(`${inputValue} added to database`);
-    input.value = ""
+  let itemInputValue = itemInput.value;
+  let amountInputValue = amountInput.value
+  if (itemInputValue.length !== 0 && amountInputValue.length !== 0) {
+    push(itemsInDB, itemInputValue);
+    push(amountInDB, Number(amountInputValue));
+    console.log(`${itemInputValue} and ${amountInputValue} added to database`);
+    itemInput.value = ""
+    amountInput.value = ""
   } else {
-    console.log('Please eneter a valid movie title');
+    console.log('Please eneter a shopping list item and price');
   }
 });
 
 
 const clearUL = () => itemList.innerHTML = "";
-const addMoviesToDOM = (item) => {
+const addItemsToDOM = (item) => {
   const newListEl = document.createElement("li");
   newListEl.textContent = item[1];
   itemList.append(newListEl);
   let itemID = item[0]
   newListEl.addEventListener("dblclick", () => {
-    let itemToBeDeleted = ref(database, `movies/${itemID}`);
+    let itemToBeDeleted = ref(database, `items/${itemID}`);
     remove(itemToBeDeleted);
   })
 };
